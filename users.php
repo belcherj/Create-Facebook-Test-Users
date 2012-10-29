@@ -31,7 +31,7 @@ for ($i = 0; $i < $numberUsers; $i++) {
     }
 
     $userResponse = $facebook->api('/' . $appId . '/accounts/test-users', 'POST', array(
-        'installed' => false,
+        'installed' => true,
         'name' => $name,
         'locale' => 'en_US',
         'method' => 'post',
