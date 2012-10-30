@@ -22,17 +22,32 @@ $access_token = $facebook->getAccessToken();
 
 $users;
 $characters = 'abcdefghijklmnopqrstuvwxyz';
+$name = array("Stephanie MacDonald",
+"Sophie Forsyth",
+"Sonia Greene",
+"Zoe Paige",
+"Hannah Slater",
+"John Howard",
+"Vanessa Butler",
+"Adrian Ball",
+"Olivia Young",
+"Gabrielle Mathis",
+"Fiona Langdon",
+"Vanessa Churchill",
+"Alexander Buckland",
+"Elizabeth Ogden",
+"Thomas Lambert",
+"Jane Peake",
+"Matt Ogden",
+"Deirdre Smith",
+"Nicholas Scott",
+"Bella Lawrence",);
 
 
 for ($i = 0; $i < $numberUsers; $i++) {
-    $name = '';
-    for ($j = 0; $j < 10; $j++) {
-        $name .= $characters[rand(0, strlen($characters) - 1)];
-    }
-
     $userResponse = $facebook->api('/' . $appId . '/accounts/test-users', 'POST', array(
         'installed' => true,
-        'name' => $name,
+        'name' => $name[$i],
         'locale' => 'en_US',
         'method' => 'post',
         'access_token' => $access_token,
@@ -40,7 +55,7 @@ for ($i = 0; $i < $numberUsers; $i++) {
     );
     $user = array(
         "id" => $userResponse["id"],
-        "name" => $name,
+        "name" => $name[$i],
         "email" => $userResponse["email"],
         "password" => $userResponse["password"],
         "access_token" => $userResponse["access_token"]
